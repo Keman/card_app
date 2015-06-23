@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <title>Флэшкарточкер</title>
+  <link rel="stylesheet" href="application.css">
+</head>
+
+<body>
+  <section id="container">
+    <header "clearfix">
+      <h1>Флэшкарточкер</h1>
+      <ul class="navigation-links">
+        <li><a href="#">Все карточки</a></li>
+        <li><a href="#">Добавить карточку</a></li>
+      </ul>
+    </header>
+
+    <%= yield %>
+
+    <div class="center hero-unit">
+      <a href="#" class="btn btn-large btn-primary">Самая бесполезная кнопка!</a>
+    </div>
+  </section>
+</body>
+</html>
