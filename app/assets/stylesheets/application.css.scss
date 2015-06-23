@@ -3,28 +3,26 @@
 #container {
   margin: 60px auto;
   width: 960px;
-}
 
-#container > section {
-  clear: both;
-}
+  section {clear: both;}
 
-#container > header {
-  margin-bottom: 50px;
-}
+  header {
+    margin-bottom: 50px;
 
-#container > header > h1 {
-  float: left;
-  margin: 0;
+    h1 {
+      float: left;
+      margin: 0;
+    }
+  }
 }
 
 .navigation-links {
   float: right;
-}
 
-.navigation-links li {
-  display: inline-block;
-  margin: 0 16px;
+  li {
+    display: inline-block;
+    margin: 0 16px;
+  }
 }
 
 .center {
