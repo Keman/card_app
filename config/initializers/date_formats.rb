@@ -1,1 +1,1 @@
-Date::DATE_FORMATS[:slash] = '%D'
+Date::DATE_FORMATS[:slash] = "%D"
