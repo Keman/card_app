@@ -13,20 +13,12 @@
       float: left;
       margin: 0;
     }
+
+    ul {
+      float: right;
+      margin: 0;
+    }
   }
-}
-
-.navigation-links {
-  float: right;
-
-  li {
-    display: inline-block;
-    margin: 0 16px;
-  }
-}
-
-.center {
-  text-align: center;
 }
 
 /* MISC */

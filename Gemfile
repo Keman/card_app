@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 
 gem 'rails', '4.2.1'
-gem 'sqlite3', '1.3.10'
+gem 'pg', '0.18.2'
 gem 'sass-rails', '5.0.3'
 gem 'uglifier', '2.7.1'
 gem 'coffee-rails', '4.1.0'

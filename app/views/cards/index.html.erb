@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Все карточки</div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Оригинал</th>
+        <th>Перевод</th>
+        <th>Дата просмотра</th>
+      </tr>
+    </thead>
+    <% @cards.each do |card| %>
+      <tbody>
+        <tr>
+          <td><%= card.original_text %></td>
+          <td><%= card.translated_text %></td>
+          <td><%= card.review_date.to_formatted_s(:date_with_slashes) %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
