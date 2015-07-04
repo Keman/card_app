@@ -5,7 +5,7 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
-    @card.review_date = Time.now + (60*60*24*3)
+    @card.save
   end
 
   def new
@@ -18,7 +18,6 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
-    @card.review_date = Time.now + (60*60*24*3)
     if @card.save
       redirect_to @card
     else
@@ -28,7 +27,6 @@ class CardsController < ApplicationController
 
   def update
     @card = Card.find(params[:id])
-    @card.review_date = Time.now + (60*60*24*3)
     if @card.update(card_params)
       redirect_to @card
     else
