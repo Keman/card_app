@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  before_validation :rev_time, on: [ :create, :update ]
+  before_validation :set_default_review_date, on: [ :create, :update ]
   validates :original_text, :translated_text, :review_date, presence: true
   validate :equality_check
 
@@ -10,7 +10,7 @@ class Card < ActiveRecord::Base
   end
 
   protected
-    def rev_time
+    def set_default_review_date
       self.review_date = Time.now + 3.days
     end
 end
