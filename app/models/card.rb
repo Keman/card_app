@@ -4,10 +4,13 @@ class Card < ActiveRecord::Base
   validate :equality_check
 
   def equality_check
-    if (original_text.squish.mb_chars.capitalize ==
-        translated_text.squish.mb_chars.capitalize)
+    if alignment(original_text) == alignment(translated_text)
       errors.add(:original_text, "original and translated text can't be equal")
     end
+  end
+
+  def alignment (text)
+    @alignment = text.squish.mb_chars.capitalize
   end
 
   protected
