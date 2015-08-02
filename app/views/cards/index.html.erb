@@ -1,21 +1,24 @@
-<div class="panel panel-default">
-  <div class="panel-heading">Все карточки</div>
-  <table class="table table-bordered table-hover">
-    <thead>
+<div class="panel-heading">Все карточки</div>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Оригинал</th>
+      <th>Перевод</th>
+      <th>Дата просмотра</th>
+    </tr>
+  </thead>
+  <% @cards.each do |card| %>
+    <tbody>
       <tr>
-        <th>Оригинал</th>
-        <th>Перевод</th>
-        <th>Дата просмотра</th>
+        <td><%= card.original_text %></td>
+        <td><%= card.translated_text %></td>
+        <td><%= card.review_date.to_formatted_s(:date_with_slashes) %></td>
+        <td><%= link_to "Изменить", edit_card_path(card) %></td>
+        <td><%= link_to "Удалить", card_path(card),
+                method: :delete,
+                date: { confirm: "Точно?" } %></td>
       </tr>
-    </thead>
-    <% @cards.each do |card| %>
-      <tbody>
-        <tr>
-          <td><%= card.original_text %></td>
-          <td><%= card.translated_text %></td>
-          <td><%= card.review_date.to_formatted_s(:date_with_slashes) %></td>
-        </tr>
-      </tbody>
-    <% end %>
-  </table>
+    </tbody>
+  <% end %>
+</table>
 </div>

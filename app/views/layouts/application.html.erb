@@ -12,10 +12,10 @@
 <body>
   <section id="container">
     <header "clearfix">
-        <h1><%= link_to "Флэшкарточкер", "/" %></h1>
+        <h1><%= link_to "Флэшкарточкер", root_path %></h1>
       <ul class="nav navbar-nav">
-        <li><%= link_to "Все карточки", "/cards" %></li>
-        <li><%= link_to "Добавить карточки" %></li>
+        <li><%= link_to "Все карточки", cards_path %></li>
+        <li><%= link_to "Добавить карточки", new_card_path %></li>
       </ul>
     </header>
 
