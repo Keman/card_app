@@ -20,5 +20,3 @@ for @i in 2..6
       pull_date ("A")
     end
 end
-
-
