@@ -11,6 +11,7 @@ gem 'jquery-rails', '4.0.3'
 gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '2.2.13'
 gem 'simple_form', '3.1.0'
+gem 'nokogiri', '1.6.6.2'
 gem 'sdoc', '0.4.1', group: :doc
 
 group :development, :test do
