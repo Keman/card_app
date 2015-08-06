@@ -9,10 +9,13 @@ def pull_data(selector, i)
   Card.create(original_text: original_text, translated_text: translated_text)
 end
 
-(2..51).each do |i|
+i = 2
+@doc.css("tbody:nth-child(#{i})").each do
   if @doc.at_css("tr.rowA:nth-child(#{i}) > td:nth-child(2)").nil?
     pull_data("B", i)
+    i += 1
   else
     pull_data("A", i)
+    i += 1
   end
 end
