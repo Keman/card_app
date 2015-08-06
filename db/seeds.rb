@@ -9,7 +9,7 @@ def pull_data(selector, i)
   Card.create(original_text: original_text, translated_text: translated_text)
 end
 
-(2..6).each do |i|
+(2..51).each do |i|
   if @doc.at_css("tr.rowA:nth-child(#{i}) > td:nth-child(2)").nil?
     pull_data("B", i)
   else
