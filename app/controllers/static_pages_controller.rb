@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-
   def index
     @card = Card.time_to_repeat
     @card = @card.shuffle[0]
@@ -8,6 +7,7 @@ class StaticPagesController < ApplicationController
   def translation_check
     if params[:version_of_translation] == params[:correct_translation]
       c = Card.find(params[:card_id])
+      c.save
       flash[:message] = "Правильно :)"
     else
       flash[:message] = "Неправильно :("
