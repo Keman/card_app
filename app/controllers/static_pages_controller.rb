@@ -6,8 +6,7 @@ class StaticPagesController < ApplicationController
 
   def translation_check
     if params[:version_of_translation] == params[:correct_translation]
-      c = Card.find(params[:card_id])
-      c.save
+      Card.find(params[:card_id]).save
       flash[:message] = "Правильно :)"
     else
       flash[:message] = "Неправильно :("
