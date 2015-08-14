@@ -1,7 +1,9 @@
 class Card < ActiveRecord::Base
-  before_validation :set_default_review_date, on: :create
+  before_validation :set_default_review_date, on: [ :create, :update ]
   validates :original_text, :translated_text, :review_date, presence: true
   validate :equality_check
+
+  scope :time_to_repeat, -> { where("review_date <= ?", Time.now) }
 
   private
     def set_default_review_date
