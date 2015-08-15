@@ -3,7 +3,13 @@ class Card < ActiveRecord::Base
   validates :original_text, :translated_text, :review_date, presence: true
   validate :equality_check
 
-  scope :time_to_repeat, -> { where("review_date <= ?", Time.now) }
+  scope :for_review, -> { where("review_date <= ?", Time.now) }
+  scope :mix, -> { order ("random()") }
+  scope :only_one, -> { limit 1 }
+
+  def self.correct_translation(version, translation)
+    version == translation
+  end
 
   private
     def set_default_review_date
