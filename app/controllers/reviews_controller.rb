@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   def new
     @card = Card.for_review.first
   end
+
   def create
     card = Card.find(params[:card_id])
     if card.translation_check(params[:version_of_translation],

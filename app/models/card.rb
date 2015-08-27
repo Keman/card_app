@@ -7,7 +7,7 @@ class Card < ActiveRecord::Base
 
   def translation_check(version, translation)
     if prepare_word(version) == prepare_word(translation)
-      self.save
+      save
       true
     else
       false
