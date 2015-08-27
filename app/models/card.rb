@@ -5,9 +5,9 @@ class Card < ActiveRecord::Base
 
   scope :for_review, -> { where("review_date <= ?", Time.now).order ("random()") }
 
-  def translation_check(version, translation, id)
+  def translation_check(version, translation)
     if prepare_word(version) == prepare_word(translation)
-      Card.find(id).save
+      self.save
       true
     else
       false

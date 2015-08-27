@@ -1,8 +1,11 @@
 class ReviewsController < ApplicationController
+  def new
+    @card = Card.for_review.first
+  end
   def create
-    if Card.new.translation_check(params[:version_of_translation],
-                                  params[:correct_translation],
-                                  params[:card_id])
+    card = Card.find(params[:card_id])
+    if card.translation_check(params[:version_of_translation],
+                              params[:correct_translation])
       flash[:message] = "Правильно :)"
     else
       flash[:message] = "Неправильно :("

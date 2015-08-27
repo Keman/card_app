@@ -3,18 +3,3 @@
   Первый в мире удобный менеджер флеш-карточек. Именно так.
   </p>
 </section>
-
-<div class="card_for_repeat">
-  <%= form_tag translation_check_path do %>
-    <% if @card != nil %>
-      Напиши перевод слова <strong><%= @card.original_text %></strong>:
-      <%= text_field_tag(:version_of_translation) %>
-      <%= hidden_field_tag(:correct_translation, @card.translated_text) %>
-      <%= hidden_field_tag(:card_id, @card.id) %>
-      <%= submit_tag "Проверить!" %>
-      <p style="font-size: 22px;">
-        <%= flash.now[:message] %>
-      </p>
-    <% end %>
-  <% end %>
-</div>
