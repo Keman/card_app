@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root "static_pages#index"
-  post "translation_check" => "static_pages#translation_check"
+  post "translation_check" => "reviews#create"
   resources :cards
 end
