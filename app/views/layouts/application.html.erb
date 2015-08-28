@@ -6,21 +6,26 @@
   <%= csrf_meta_tags %>
 
   <title>Флэшкарточкер</title>
-  <link rel="stylesheet" href="application.css">
+  <link rel="stylesheet" href="application.css.scss">
 </head>
 
 <body>
-  <section id="container">
-    <header "clearfix">
-        <h1><%= link_to "Флэшкарточкер", root_path %></h1>
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Все карточки", cards_path %></li>
-        <li><%= link_to "Добавить карточку", new_card_path %></li>
-      </ul>
-    </header>
+  <div class="navbar navbar-inverse navbar-fluid-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="<%= root_path %>" class="navbar-brand">Флэшкарточкер</a>
+      </div>
+      <div class="navbar-right">
+        <ul class="nav navbar-nav">
+          <li><a href="<%= repeat_path %>" class="navbar-brand">Проверить карточку</a></li>
+          <li><a href="<%= cards_path %>" class="navbar-brand">Все карточки</a></li>
+          <li><a href="<%= new_card_path %>" class="navbar-brand">Добавить карточку</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
     <%= yield %>
 
-  </section>
 </body>
 </html>
