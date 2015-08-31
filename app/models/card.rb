@@ -1,12 +1,13 @@
 class Card < ActiveRecord::Base
-  before_validation :set_default_review_date, on: [:create, :update]
+  before_validation :set_review_date, on: [:create]
   validates :original_text, :translated_text, :review_date, presence: true
   validate :equality_check
 
   scope :for_review, -> { where("review_date <= ?", Time.now).order ("random()") }
 
-  def translation_check(version, translation)
-    if prepare_word(version) == prepare_word(translation)
+  def check_translation(version)
+    if prepare_word(version) == prepare_word(translated_text)
+      set_review_date
       save
       true
     else
@@ -15,7 +16,7 @@ class Card < ActiveRecord::Base
   end
 
   private
-    def set_default_review_date
+    def set_review_date
       self.review_date = Time.now + 3.days
     end
 

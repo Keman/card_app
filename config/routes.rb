@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "static_pages#index"
-  get "/repeat" => "reviews#new"
-  post "translation_check" => "reviews#create"
+  patch "/check_translation" => "reviews#create"
   resources :cards
+  resources :reviews
 end
