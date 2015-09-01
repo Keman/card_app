@@ -17,21 +17,21 @@ class Card < ActiveRecord::Base
 
   private
 
-    def set_default_review_date
-      self.review_date = Time.now + 3.days
-    end
+  def set_default_review_date
+    self.review_date = Time.now + 3.days
+  end
 
-    def set_review_date
-      self.review_date = Time.now + 5.days
-    end
+  def set_review_date
+    self.review_date = Time.now + 5.days
+  end
 
-    def equality_check
-      if prepare_word(original_text) == prepare_word(translated_text)
-        errors.add(:original_text, "original and translated text can't be equal")
-      end
+  def equality_check
+    if prepare_word(original_text) == prepare_word(translated_text)
+      errors.add(:original_text, "original and translated text can't be equal")
     end
+  end
 
-    def prepare_word(text)
-      text.squish.mb_chars.capitalize
-    end
+  def prepare_word(text)
+    text.squish.mb_chars.capitalize
+  end
 end
