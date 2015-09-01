@@ -2,14 +2,12 @@
   <div class="col-xs-3"></div>
   <div class="col-xs-6 text-center">
     <div class="card_for_repeat">
-      <% if @card != nil %>
-        <%= simple_form_for @card, url: check_translation_path do |f| %>
+      <% if @card.present? %>
+        <%= simple_form_for :review, url: reviews_path do |f| %>
           Напиши перевод слова <strong><%= @card.original_text %></strong>:
-          <%= simple_fields_for :var do |x| %>
-          <%= x.input :version_of_translation %>
-          <%= hidden_field_tag :card_id, @card.id %>
+          <%= f.input :version_of_translation %>
+          <%= f.hidden_field :card_id, value: @card.id %>
           <%= f.button :submit, "Проверить!" %>
-          <% end %>
           <h3><%= flash.now[:message] %></h3>
         <% end %>
       <% end %>

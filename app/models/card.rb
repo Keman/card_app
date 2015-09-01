@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  before_validation :set_review_date, on: [:create]
+  before_validation :set_default_review_date, on: [:create]
   validates :original_text, :translated_text, :review_date, presence: true
   validate :equality_check
 
@@ -16,8 +16,12 @@ class Card < ActiveRecord::Base
   end
 
   private
-    def set_review_date
+    def set_default_review_date
       self.review_date = Time.now + 3.days
+    end
+
+    def set_review_date
+      self.review_date = Time.now + 5.days
     end
 
     def equality_check
