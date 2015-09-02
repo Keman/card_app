@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col-xs-3"></div>
+  <div class="col-xs-6 text-center">
+    <div class="card_for_repeat">
+      <% if @card.present? %>
+        <%= simple_form_for :review, url: reviews_path do |f| %>
+          Напиши перевод слова <strong><%= @card.original_text %></strong>:
+          <%= f.input :version_of_translation %>
+          <%= f.hidden_field :card_id, value: @card.id %>
+          <%= f.button :submit, "Проверить!" %>
+          <h3><%= flash.now[:message] %></h3>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-3"></div>
+</div>

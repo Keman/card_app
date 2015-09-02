@@ -38,11 +38,12 @@ class CardsController < ApplicationController
   end
 
   private
-    def card_params
-      params.require(:card).permit(:original_text, :translated_text, :review_date)
-    end
 
-    def find_card
-      @card = Card.find(params[:id])
-    end
+  def card_params
+    params.require(:card).permit(:original_text, :translated_text, :review_date)
+  end
+
+  def find_card
+    @card = Card.find(params[:id])
+  end
 end
