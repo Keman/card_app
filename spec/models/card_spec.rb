@@ -2,14 +2,14 @@ require "rails_helper"
 
 describe Card do
   context "#check_translation" do
-    let(:test_card) { Card.create!(original_text: "Mom wash frame", translated_text: "Мама мыла раму") }
+    let(:card) { Card.create!(original_text: "Mom wash frame", translated_text: "Мама мыла раму") }
 
     it "should correct verify compliance translations" do
-      expect(test_card.check_translation("мАмА  МыЛА   РамУ")).to eq(true)
+      expect(card.check_translation("мАмА  МыЛА   РамУ")).to eq(true)
     end
 
     it "should not pass incorrect translations" do
-      expect(test_card.check_translation("Мать протирала окно")).to eq(false)
+      expect(card.check_translation("Мать протирала окно")).to eq(false)
     end
   end
 
