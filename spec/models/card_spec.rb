@@ -3,7 +3,7 @@ require "rails_helper"
 describe Card do
   context "#check_translation" do
     let(:c) do
-      c = create(:card, original_text: "Test", translated_text: "Тест")
+      create(:card, original_text: "Test", translated_text: "Тест")
     end
 
     it "should correct verify compliance translations" do

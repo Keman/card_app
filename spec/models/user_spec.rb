@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe User do
   it "placeholder" do
-    expect(1+1).to eq(2)
+    expect(1 + 1).to eq(2)
   end
 end
