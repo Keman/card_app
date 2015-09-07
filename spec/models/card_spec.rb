@@ -2,14 +2,16 @@ require "rails_helper"
 
 describe Card do
   context "#check_translation" do
-    let(:card) { Card.create!(original_text: "Mom wash frame", translated_text: "Мама мыла раму") }
+    let(:c) do
+      c = create(:card, original_text: "Test", translated_text: "Тест")
+    end
 
     it "should correct verify compliance translations" do
-      expect(card.check_translation("мАмА  МыЛА   РамУ")).to eq(true)
+      expect(c.check_translation("тЕсТ")).to eq(true)
     end
 
     it "should not pass incorrect translations" do
-      expect(card.check_translation("Мать протирала окно")).to eq(false)
+      expect(c.check_translation("Текст")).to eq(false)
     end
   end
 
@@ -23,9 +25,10 @@ describe Card do
     end
 
     it "should set right default review date" do
-      test_card = Card.create!(original_text: "A", translated_text: "B")
+      u = User.create
+      c = Card.create(original_text: "Test", translated_text: "Тест", user_id: u.id)
 
-      expect(test_card.review_date).to eq(Time.now + 3.days)
+      expect(c.review_date).to eq(Time.now + 3.days)
     end
   end
 end

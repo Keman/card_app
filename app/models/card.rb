@@ -1,6 +1,8 @@
 class Card < ActiveRecord::Base
+  belongs_to :user
+
   before_validation :set_default_review_date, on: [:create]
-  validates :original_text, :translated_text, :review_date, presence: true
+  validates :user, :original_text, :translated_text, :review_date, presence: true
   validate :equality_check
 
   scope :for_review, -> { where("review_date <= ?", Time.now).order ("random()") }
