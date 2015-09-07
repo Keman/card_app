@@ -16,8 +16,10 @@ gem 'timecop', '0.8.0'
 gem 'sdoc', '0.4.1', group: :doc
 
 group :development, :test do
-  gem 'byebug'
+  gem 'byebug', '6.0.2'
   gem 'web-console', '2.1.2'
-  gem 'spring'
+  gem 'spring', '1.3.6'
   gem 'rspec-rails', '3.3.3'
+  gem 'factory_girl_rails', '4.5.0'
+  gem 'capybara', '2.5.0'
 end
