@@ -10,5 +10,4 @@ describe "review card process" do
     click_button "Проверить!"
     expect(page).to have_content "Правильно :)"
   end
-
 end
