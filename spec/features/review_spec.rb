@@ -3,10 +3,11 @@ require "support/login_helper"
 
 describe "review card process" do
   let!(:user) { create(:user, email: "u@mail.com", password: "123") }
+  let!(:card) { create(:card, translated_text: "Тест", user: user) }
 
   before(:each) do
     login("u@mail.com", "123")
-    create(:card, translated_text: "Тест", user: user)
+    card.update_attributes(review_date: Time.now)
   end
 
   it "should show positive flash message (if it need)" do
