@@ -1,0 +1,6 @@
+<%= simple_form_for user do |f| %>
+  <%= f.input :email, label: "Почта" %>
+  <%= f.input :password, label: "Пароль" %>
+  <%= f.input :password_confirmation, label: "Потдверждение пароля" %>
+  <div class="text-center"><%= f.button :submit, value: "ОК" %></div>
+<% end %>

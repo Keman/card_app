@@ -1,9 +1,13 @@
 require "rails_helper"
+require "support/login_helper"
 
 describe "review card process" do
+
+  let!(:user) { create(:user, email: "u@mail.com", password: "123") }
+
   before(:each) do
-    create(:card, translated_text: "Тест")
-    create(:card, translated_text: "Тест")
+    login("u@mail.com", "123")
+    create(:card, translated_text: "Тест", user_id: user.id)
   end
 
   it "should show positive flash message (if it need)" do

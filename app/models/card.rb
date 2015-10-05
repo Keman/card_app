@@ -2,10 +2,14 @@ class Card < ActiveRecord::Base
   belongs_to :user
 
   before_validation :set_default_review_date, on: [:create]
-  validates :user, :original_text, :translated_text, :review_date, presence: true
+  validates :user_id, :original_text, :translated_text, :review_date, presence: true
   validate :equality_check
 
   scope :for_review, -> { where("review_date <= ?", Time.now).order ("random()") }
+
+  def self.of_user(id)
+    where("user_id = ?", id)
+  end
 
   def check_translation(version_of_translation)
     if prepare_word(version_of_translation) == prepare_word(translated_text)

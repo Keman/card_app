@@ -1,14 +1,14 @@
 class ReviewsController < ApplicationController
   def new
-    @card = Card.for_review.first
+    @card = Card.of_user(current_user.id).for_review.first
   end
 
   def create
     card = Card.find(review_params[:card_id])
     if card.check_translation(review_params[:version_of_translation])
-      flash[:message] = "Правильно :)"
+      flash[:success] = "Правильно :)"
     else
-      flash[:message] = "Неправильно :("
+      flash[:danger] = "Неправильно :("
     end
     redirect_to :back
   end

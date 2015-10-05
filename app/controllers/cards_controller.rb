@@ -1,8 +1,8 @@
 class CardsController < ApplicationController
-  before_action :find_card, only: [:show, :edit, :update, :destroy]
+  before_action :find_card, :user_check, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cards = Card.all
+    @cards = Card.of_user(current_user.id)
   end
 
   def show
@@ -45,5 +45,12 @@ class CardsController < ApplicationController
 
   def find_card
     @card = Card.find(params[:id])
+  end
+
+  def user_check
+    if @card.user_id != current_user.id
+      flash[:warning] = "Неверный пользователь"
+      redirect_back_or_to root_path
+    end
   end
 end
