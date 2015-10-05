@@ -6,7 +6,7 @@ describe "review card process" do
 
   before(:each) do
     login("u@mail.com", "123")
-    create(:card, translated_text: "Тест", user_id: user.id)
+    create(:card, translated_text: "Тест", user: user)
   end
 
   it "should show positive flash message (if it need)" do

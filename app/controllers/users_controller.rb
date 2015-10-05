@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def user_check
-    if @user.id != current_user.id
+    if @user != current_user
       flash[:warning] = "Неверный пользователь"
       redirect_back_or_to root_path
     end

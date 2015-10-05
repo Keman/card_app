@@ -8,7 +8,7 @@ class Card < ActiveRecord::Base
   scope :for_review, -> { where("review_date <= ?", Time.now).order ("random()") }
 
   def self.of_user(id)
-    where("user_id = ?", id)
+    where(user_id: id)
   end
 
   def check_translation(version_of_translation)

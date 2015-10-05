@@ -48,7 +48,7 @@ class CardsController < ApplicationController
   end
 
   def user_check
-    if @card.user_id != current_user.id
+    if @card.user != current_user
       flash[:warning] = "Неверный пользователь"
       redirect_back_or_to root_path
     end
