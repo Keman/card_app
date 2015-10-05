@@ -2,10 +2,9 @@ require "rails_helper"
 require "support/login_helper"
 
 describe "login and logout" do
-
   let!(:user) { create(:user, email: "u@mail.com", password: "123") }
 
-    it "should correctly login user" do
+  it "should correctly login user" do
     visit root_path
     click_link "Войти"
     fill_in "user_sessions_email", with: "u@mail.com"

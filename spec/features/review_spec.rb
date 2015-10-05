@@ -2,7 +2,6 @@ require "rails_helper"
 require "support/login_helper"
 
 describe "review card process" do
-
   let!(:user) { create(:user, email: "u@mail.com", password: "123") }
 
   before(:each) do

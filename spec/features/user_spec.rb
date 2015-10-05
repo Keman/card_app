@@ -2,7 +2,6 @@ require "rails_helper"
 require "support/login_helper"
 
 describe "user process" do
-
   let!(:user1) { create(:user, email: "u1@mail.com", password: "123") }
   let!(:user2) { create(:user, email: "u2@mail.com", password: "123") }
   let!(:card) { create(:card, translated_text: "Тест", user_id: user1.id) }
