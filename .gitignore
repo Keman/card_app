@@ -17,7 +17,7 @@ db/*.sqlite3
 .sass-cache
 /config/config.yml
 /config/database.yml
-/config/initializers/omniauth.rb
+/config/initializers/sorcery.rb
 /coverage.data
 /coverage/
 /db/*.javadb/
