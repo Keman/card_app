@@ -17,12 +17,27 @@
       </div>
       <div class="navbar-right">
         <ul class="nav navbar-nav">
-          <li><a href="<%= new_review_path %>" class="navbar-brand">Проверить карточку</a></li>
-          <li><a href="<%= cards_path %>" class="navbar-brand">Все карточки</a></li>
-          <li><a href="<%= new_card_path %>" class="navbar-brand">Добавить карточку</a></li>
+          <% if current_user %>
+            <li><a href="<%= new_review_path %>" class="navbar-brand">Проверить карточку</a></li>
+            <li><a href="<%= cards_path %>" class="navbar-brand">Все карточки</a></li>
+            <li><a href="<%= new_card_path %>" class="navbar-brand">Добавить карточку</a></li>
+            <li><a href="<%= edit_user_path(current_user) %>" class="navbar-brand">Редактировать профиль</a></li>
+            <li><a href="<%= logout_path %>" class="navbar-brand" data-method="post">Выйти</a></li>
+          <% else %>
+            <li><a href="<%= new_user_path %>" class="navbar-brand">Зарегистрироваться</a></li>
+            <li><a href="<%= login_path %>" class="navbar-brand">Войти</a></li>
+          <% end %>
         </ul>
       </div>
     </div>
+  </div>
+
+  <div class="container">
+    <% flash.each do |key, value|%>
+      <div class="text-center alert alert-<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
   </div>
 
     <%= yield %>
