@@ -14,6 +14,7 @@ gem 'simple_form', '3.1.0'
 gem 'nokogiri', '1.6.6.2'
 gem 'sorcery', '0.9.1'
 gem 'validates_email_format_of', '1.6.3'
+gem 'figaro', '1.1.1'
 gem 'sdoc', '0.4.1', group: :doc
 
 group :development, :test do
