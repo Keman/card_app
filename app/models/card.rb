@@ -5,6 +5,10 @@ class Card < ActiveRecord::Base
   validates :user_id, :original_text, :translated_text, :review_date, presence: true
   validate :equality_check
 
+  has_attached_file :picture, styles: { original: "360x360#" }
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+  validates_with AttachmentSizeValidator, attributes: :picture, less_than: 1.megabytes
+
   scope :for_review, -> { where("review_date <= ?", Time.now).order ("random()") }
 
   def self.of_user(id)

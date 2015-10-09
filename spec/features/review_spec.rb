@@ -8,6 +8,7 @@ describe "review card process" do
   before(:each) do
     login("u@mail.com", "123")
     card.update_attributes(review_date: Time.now)
+    card.update_attributes(picture: File.open("#{Rails.root}/spec/support/ruby.png"))
   end
 
   it "should show positive flash message (if it need)" do
@@ -22,5 +23,10 @@ describe "review card process" do
     fill_in "review_version_of_translation", with: "Abrakadabra"
     click_button "Проверить!"
     expect(page).to have_content "Неправильно :("
+  end
+
+  it "should show picture (if it present))" do
+    visit new_review_path
+    expect(page).to have_selector("img")
   end
 end
