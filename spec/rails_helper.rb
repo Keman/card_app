@@ -7,7 +7,6 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'paperclip/matchers'
-require 'aws'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -57,7 +56,4 @@ RSpec.configure do |config|
   config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
   config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
   config.include Paperclip::Shoulda::Matchers
-
-  AWS.stub!
-  AWS.config(:access_key_id => ENV["s3_key"], :secret_access_key => ENV["s3_secret"])
 end
