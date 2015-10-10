@@ -79,6 +79,10 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     storage: :s3,
-    bucket: "card-app"
+    s3_credentials: {
+      bucket: "cardapp",
+      access_key_id: ENV['s3_key'],
+      secret_access_key: ENV['s3_secret']
+    }
   }
 end
