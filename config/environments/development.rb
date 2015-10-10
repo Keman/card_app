@@ -42,8 +42,8 @@ Rails.application.configure do
     storage: :s3,
     s3_credentials: {
       bucket: "cardapp",
-      access_key_id: ENV['s3_key'],
-      secret_access_key: ENV['s3_secret']
+      access_key_id: ENV["s3_key"],
+      secret_access_key: ENV["s3_secret"]
     }
   }
 end
