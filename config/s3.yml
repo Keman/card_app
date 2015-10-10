@@ -1,7 +1,7 @@
 development: &development
   bucket: cardapp
-  access_key_id: ENV["s3_key"]
-  secret_access_key: ENV["s3_secret"]
+  access_key_id: <%= ENV["s3_key"] %>
+  secret_access_key: <%= ENV["s3_secret"] %>
 
 production:
   <<: *development
