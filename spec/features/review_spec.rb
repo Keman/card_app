@@ -10,8 +10,8 @@ describe "review card process" do
 
   before(:each) do
     login("u@mail.com", "123")
-    card_1.update_attributes(review_date: Time.now)
-    card_2.update_attributes(review_date: Time.now)
+    card_1.update_attributes(review_date: Time.now.utc)
+    card_2.update_attributes(review_date: Time.now.utc)
     Deck.make_main(deck_1.id)
   end
 
