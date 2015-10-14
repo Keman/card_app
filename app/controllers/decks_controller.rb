@@ -30,8 +30,12 @@ class DecksController < ApplicationController
   end
 
   def destroy
-    @deck.destroy
-    redirect_to decks_path
+    if @deck.description != "Стандартная колода"
+      std_deck = Deck.where("user_id = ? and description = 'Стандартная колода'", @deck.user_id).first
+      Card.where(["deck_id = ?", @deck.id]).update_all deck_id: std_deck.id
+      @deck.destroy
+      redirect_to decks_path
+    end
   end
 
   def make_main

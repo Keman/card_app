@@ -13,7 +13,7 @@
         <tbody>
           <tr>
             <td><%= deck.description %></td>
-            <td><%= deck.id %></td>
+            <td><%= Card.where(["deck_id = ?", deck.id]).length %></td>
             <% if deck.main %>
               <td><i class='fa fa-flag fa-2x'></i></td>
               <td><%= link_to "Сделать обычной", controller: "decks", action: "make_common", id: deck.id %></td>
@@ -22,8 +22,10 @@
               <td><%= link_to "Сделать текущей <i class='fa fa-flag'></i>".html_safe, controller: "decks", action: "make_main", id: deck.id %></td>
             <% end %>
             <% if deck.description != "Стандартная колода" %>
-              <td><%= link_to "<i class='fa fa-pencil-square fa-2x'></i>".html_safe, edit_deck_path(deck), id: "Изменить" %></td>
-              <td><%= link_to "<i class='fa fa-times fa-2x'></i>".html_safe, deck_path(deck), method: :delete, id: "Удалить" %></td>
+              <td>
+                <%= link_to "<i class='fa fa-pencil-square fa-2x'></i>".html_safe, edit_deck_path(deck), id: "Изменить" %>
+                <%= link_to "<i class='fa fa-times fa-2x'></i>".html_safe, deck_path(deck), method: :delete, id: "Удалить" %>
+              </td>
             <% end %>
           </tr>
         </tbody>
