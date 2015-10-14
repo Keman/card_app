@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :find_card, :user_check, only: [:show, :edit, :update, :destroy]
+  before_action :find_card, :user_check, only: [:show, :edit, :update, :destroy, :delete_picture]
 
   def index
     @cards = Card.of_user(current_user.id)
@@ -18,7 +18,7 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     if @card.save
-      redirect_to @card
+      redirect_to cards_path
     else
       render "new"
     end
@@ -26,7 +26,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to @card
+      redirect_to cards_path
     else
       render "edit"
     end
@@ -37,10 +37,15 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def delete_picture
+    @card.update_attributes(picture: nil)
+    redirect_to :back
+  end
+
   private
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date, :user_id, :picture)
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :user_id, :deck_id, :picture)
   end
 
   def find_card

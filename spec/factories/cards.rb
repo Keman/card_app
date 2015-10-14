@@ -3,5 +3,6 @@ FactoryGirl.define do
     original_text "Test"
     translated_text "Тест"
     user
+    deck
   end
 end

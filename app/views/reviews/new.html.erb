@@ -4,13 +4,16 @@
     <div class="card_for_repeat">
       <% if @card.present? %>
         <%= simple_form_for :review, url: reviews_path do |f| %>
-          <%= image_tag @card.picture.url %>
+          <% if @card.picture.present? %>
+            <%= image_tag @card.picture.url %>
+          <% end %>
           <%= f.input :version_of_translation,
                        label: "Как это переводится #{@card.original_text}?" %>
           <%= f.hidden_field :card_id, value: @card.id %>
           <%= f.button :submit, "Проверить!" %>
-          <h3><%= flash.now[:message] %></h3>
         <% end %>
+      <% else %>
+        <h3>У вас нет карточек для повторения</h3>
       <% end %>
     </div>
   </div>

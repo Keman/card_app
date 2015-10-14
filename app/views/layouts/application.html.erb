@@ -13,21 +13,44 @@
   <div class="navbar navbar-inverse navbar-fluid-top">
     <div class="container">
       <div class="navbar-header">
-        <a href="<%= root_path %>" class="navbar-brand">Флэшкарточкер</a>
+        <a href="<%= root_path %>" class="navbar-brand">Флэшкарточкер <i class="fa fa-language"></i></a>
       </div>
       <div class="navbar-right">
-        <ul class="nav navbar-nav">
-          <% if current_user %>
+        <% if current_user %>
+          <ul class="nav navbar-nav">
             <li><a href="<%= new_review_path %>" class="navbar-brand">Проверить карточку</a></li>
-            <li><a href="<%= cards_path %>" class="navbar-brand">Все карточки</a></li>
-            <li><a href="<%= new_card_path %>" class="navbar-brand">Добавить карточку</a></li>
-            <li><a href="<%= edit_user_path(current_user) %>" class="navbar-brand">Редактировать профиль</a></li>
-            <li><a href="<%= logout_path %>" class="navbar-brand" data-method="post">Выйти</a></li>
-          <% else %>
-            <li><a href="<%= new_user_path %>" class="navbar-brand">Зарегистрироваться</a></li>
-            <li><a href="<%= login_path %>" class="navbar-brand">Войти</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">Карточки <i class="fa fa-level-down"></i></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= new_card_path %>"><i class="fa fa-plus-square"></i> Добавить карточку</a></li>
+                <li><a href="<%= cards_path %>"><i class="fa fa-list"></i> Посмотреть карточки</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">Колоды <i class="fa fa-level-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= new_deck_path %>"><i class="fa fa-plus-square"></i> Добавить колоду</a></li>
+                <li><a href="<%= decks_path %>"><i class="fa fa-list"></i> Посмотреть колоды</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" id="Настройки" class="dropdown-toggle navbar-brand" data-toggle="dropdown"><i class="fa fa-cog"></i></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= edit_user_path(current_user) %>"><i class="fa fa-pencil"></i> Редактировать профиль</a></li>
+                <li><a href="<%= logout_path %>" data-method="post" id="Выйти"><i class="fa fa-sign-out"></i> Выйти</a></li>
+              </ul>
+            </li>
+          </ul>
+        <% else %>
+          <%= simple_form_for :user_sessions, url: user_sessions_path, html: { class: "navbar-form" } do |f| %>
+            <%= f.input_field :email, placeholder: "Email", label: false, class: "form-control" %>
+            <%= f.input_field :password, placeholder: "Password", label: false, class: "form-control" %>
+            <%= button_tag(type: "submit", class: "btn btn-primary", id: "Войти") do %>
+              <i class="fa fa-sign-in"></i> Войти
+            <% end %>
+            <%= link_to "<i class='fa fa-user-plus'></i> Зарегистрироваться".html_safe, new_user_path, {:class=>"btn btn-primary"} %>
           <% end %>
-        </ul>
+        <% end %>
       </div>
     </div>
   </div>
