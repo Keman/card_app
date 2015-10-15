@@ -11,7 +11,7 @@ class Deck < ActiveRecord::Base
 
   def self.make_main(id)
     @deck = Deck.find(id)
-    if !find_main.nil?
+    if find_main.present?
       old_main = find_main
       old_main.update_attributes(main: false)
     end

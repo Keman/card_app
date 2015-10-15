@@ -1,5 +1,6 @@
 class DecksController < ApplicationController
-  before_action :find_deck, :user_check, only: [:show, :edit, :update, :destroy, :make_main, :make_common]
+  before_action :find_deck, :user_check, only: [:edit, :update, :destroy, :make_main, :make_common]
+  before_action :std_check, only: [:edit, :update, :destroy]
 
   def index
     @decks = Deck.of_user(current_user.id)
@@ -30,12 +31,10 @@ class DecksController < ApplicationController
   end
 
   def destroy
-    if @deck.description != "Стандартная колода"
-      std_deck = Deck.where("user_id = ? and description = 'Стандартная колода'", @deck.user_id).first
-      Card.where(["deck_id = ?", @deck.id]).update_all deck_id: std_deck.id
-      @deck.destroy
-      redirect_to decks_path
-    end
+    std_deck = Deck.find_by(user_id: @deck.user_id, standart: true)
+    Card.where(deck_id: @deck.id).update_all deck_id: std_deck.id
+    @deck.destroy
+    redirect_to decks_path
   end
 
   def make_main
@@ -51,7 +50,7 @@ class DecksController < ApplicationController
   private
 
   def deck_params
-    params.require(:deck).permit(:user_id, :description, :id)
+    params.require(:deck).permit(:user_id, :description)
   end
 
   def find_deck
@@ -64,4 +63,12 @@ class DecksController < ApplicationController
       redirect_back_or_to root_path
     end
   end
+
+  def std_check
+    if @deck.standart == true
+      flash[:warning] = "Нельзя менять стандартную колоду"
+      redirect_back_or_to root_path
+    end
+  end
+
 end

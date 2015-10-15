@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
-  get "make_main" => "decks#make_main"
-  get "make_common" => "decks#make_common"
-
-  get "delete_picture" => "cards#delete_picture"
+  patch "make_main" => "decks#make_main"
+  patch "make_common" => "decks#make_common"
 end

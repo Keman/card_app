@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20151012105630) do
     t.integer  "user_id"
     t.string   "description"
     t.boolean  "main",        default: false
+    t.boolean  "standart",    default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

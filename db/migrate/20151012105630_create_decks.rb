@@ -4,6 +4,7 @@ class CreateDecks < ActiveRecord::Migration
       t.belongs_to :user, index: true
       t.string :description
       t.boolean :main, default: false
+      t.boolean :standart, default: false
 
       t.timestamps null: false
     end

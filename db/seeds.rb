@@ -5,7 +5,7 @@ doc = Nokogiri::HTML(open(url))
 nodes = doc.css("tr")
 nodes.shift
 user = User.create(email: "#{('a'..'z').to_a.shuffle[0..9].join}@mail.com", password: "123", password_confirmation: "123")
-deck = Deck.create(description: "Стандартная колода", user: user)
+deck = Deck.create(description: "Стандартная колода", user: user, standart: true)
 puts "For login use this email: " + user.email + " and this password: 123"
 
 nodes.each do |node|

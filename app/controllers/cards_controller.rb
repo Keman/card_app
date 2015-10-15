@@ -25,7 +25,10 @@ class CardsController < ApplicationController
   end
 
   def update
-    if @card.update(card_params)
+    if card_params[:picture] == ""
+      @card.update_attributes(picture: nil)
+      redirect_to :back
+    elsif @card.update(card_params)
       redirect_to cards_path
     else
       render "edit"
@@ -35,11 +38,6 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     redirect_to cards_path
-  end
-
-  def delete_picture
-    @card.update_attributes(picture: nil)
-    redirect_to :back
   end
 
   private
