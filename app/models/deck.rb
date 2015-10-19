@@ -2,7 +2,6 @@ class Deck < ActiveRecord::Base
   has_many :cards
   belongs_to :user
 
-  before_validation :set_default_description, on: [:create]
   validates :user_id, presence: true
 
   def self.of_user(id)
@@ -24,12 +23,6 @@ class Deck < ActiveRecord::Base
   end
 
   private
-
-  def set_default_description
-    if description.blank?
-      self.description = "Новая колода"
-    end
-  end
 
   def self.find_main
     find_by(user_id: @deck.user_id, main: true)

@@ -20,18 +20,18 @@ class CardsController < ApplicationController
     if @card.save
       redirect_to cards_path
     else
-      render "new"
+      render :new
     end
   end
 
   def update
-    if card_params[:picture] == ""
+    if card_params[:picture].blank?
       @card.update_attributes(picture: nil)
       redirect_to :back
     elsif @card.update(card_params)
       redirect_to cards_path
     else
-      render "edit"
+      render :edit
     end
   end
 
