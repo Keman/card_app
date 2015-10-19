@@ -22,8 +22,6 @@ class Deck < ActiveRecord::Base
     deck.update_attributes(main: false)
   end
 
-  private
-
   def self.find_main
     find_by(user_id: @deck.user_id, main: true)
   end
