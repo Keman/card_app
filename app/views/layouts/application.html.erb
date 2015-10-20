@@ -44,10 +44,11 @@
         <% else %>
           <%= simple_form_for :user_sessions, url: user_sessions_path, html: { class: "navbar-form" } do |f| %>
             <%= f.input_field :email, placeholder: "Email", label: false, class: "form-control" %>
-            <%= f.input_field :password, placeholder: "Password", label: false, class: "form-control" %>
+            <%= f.input_field :password, placeholder: "Пароль", label: false, class: "form-control" %>
             <%= button_tag(type: "submit", class: "btn btn-primary", id: "Войти") do %>
               <i class="fa fa-sign-in"></i> Войти
             <% end %>
+            <%= link_to "<i class='fa fa-twitter'></i>".html_safe, auth_at_provider_path(:provider => :twitter), {:class=>"btn btn-primary"} %>
             <%= link_to "<i class='fa fa-user-plus'></i> Зарегистрироваться".html_safe, new_user_path, {:class=>"btn btn-primary"} %>
           <% end %>
         <% end %>

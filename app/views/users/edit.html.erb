@@ -3,7 +3,9 @@
   <div class="col-xs-6 text-center">
     <h3>Изменить параметры пользователя</h3>
     <%= render "form", user: @user %>
-    <%= link_to "Удалить пользователя", user_path(@user),
+    </br>
+    <%= button_to "Удалить пользователя", user_path(@user),
+            class: "btn btn-danger",
             method: :delete,
             data: { confirm: "Точно?" } %>
   </div>

@@ -33,7 +33,7 @@ class Card < ActiveRecord::Base
   private
 
   def set_default_review_date
-    self.review_date = Time.now.utc.to_date + 3.days
+    self.review_date = Time.now.utc.to_date
   end
 
   def equality_check
