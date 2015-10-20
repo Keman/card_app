@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def new
-    main_deck = Deck.find_by(user_id: current_user.id, main: true)
+    main_deck = Deck.find_by(user: current_user, main: true)
     @card = main_deck.present? ? Card.of_deck(main_deck.id).for_review.first : Card.of_user(current_user.id).for_review.first
   end
 

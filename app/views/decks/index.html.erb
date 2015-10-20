@@ -13,7 +13,7 @@
         <tbody>
           <tr>
             <td><%= deck.description %></td>
-            <td><%= Card.where(deck_id: deck.id).length %></td>
+            <td><%= deck.cards.length %></td>
             <% if deck.main %>
               <td><i class='fa fa-flag fa-2x'></i></td>
               <td><%= link_to "Сделать обычной", make_common_path(id: deck.id), method: :patch %></td>
