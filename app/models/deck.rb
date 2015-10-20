@@ -11,8 +11,7 @@ class Deck < ActiveRecord::Base
   def self.make_main(id)
     @deck = Deck.find(id)
     if find_main.present?
-      old_main = find_main
-      old_main.update_attributes(main: false)
+      find_main.update_attributes(main: false)
     end
     @deck.update_attributes(main: true)
   end
@@ -23,6 +22,6 @@ class Deck < ActiveRecord::Base
   end
 
   def self.find_main
-    find_by(user_id: @deck.user_id, main: true)
+    find_by(user: @deck.user, main: true)
   end
 end

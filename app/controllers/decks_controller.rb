@@ -31,8 +31,7 @@ class DecksController < ApplicationController
   end
 
   def destroy
-    std_deck = Deck.find_by(user_id: @deck.user_id, standart: true)
-    Card.where(deck_id: @deck.id).update_all deck_id: std_deck.id
+    Card.where(deck_id: @deck.id).destroy_all
     @deck.destroy
     redirect_to decks_path
   end

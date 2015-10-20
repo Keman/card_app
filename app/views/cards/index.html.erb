@@ -15,7 +15,7 @@
           <tr>
             <td><%= card.original_text %></td>
             <td><%= card.translated_text %></td>
-            <td><%= Deck.find(card.deck_id).description %></td>
+            <td><%= card.deck.description %></td>
             <td><%= card.review_date.to_formatted_s(:date_with_slashes) %></td>
             <td>
               <%= link_to "<i class='fa fa-pencil-square fa-2x'></i>".html_safe, edit_card_path(card), id: "Изменить" %>

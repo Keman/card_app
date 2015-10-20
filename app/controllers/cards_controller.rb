@@ -25,7 +25,7 @@ class CardsController < ApplicationController
   end
 
   def update
-    if card_params[:picture].blank?
+    if card_params[:picture] == "delete"
       @card.update_attributes(picture: nil)
       redirect_to :back
     elsif @card.update(card_params)
