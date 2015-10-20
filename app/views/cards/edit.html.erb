@@ -2,7 +2,10 @@
   <div class="col-xs-3"></div>
   <div class="col-xs-6 text-center">
     <h3>Изменить карточку</h3>
-    <%= image_tag @card.picture.url %>
+    <% if @card.picture.present? %>
+      <%= image_tag @card.picture.url %>
+      <%= link_to "Удалить картинку", card_path(card: {picture: "delete"}), method: :patch %>
+    <% end %>
     <%= render "form", card: @card %>
   </div>
   <div class="col-xs-3"></div>

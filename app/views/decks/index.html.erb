@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="col-xs-12">
+    <h3 class="text-center">Все колоды</h3>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Название колоды</th>
+          <th>Количество карточек</th>
+          <th>Текущая</th>
+        </tr>
+      </thead>
+      <% @decks.each do |deck| %>
+        <tbody>
+          <tr>
+            <td><%= deck.description %></td>
+            <td><%= deck.cards.length %></td>
+            <% if deck.main %>
+              <td><i class='fa fa-flag fa-2x'></i></td>
+              <td><%= link_to "Сделать обычной", make_common_path(id: deck.id), method: :patch %></td>
+            <% else %>
+              <td></td>
+              <td><%= link_to "Сделать текущей <i class='fa fa-flag'></i>".html_safe, make_main_path(id: deck.id), method: :patch %></td>
+            <% end %>
+            <% unless deck.standart %>
+              <td>
+                <%= link_to "<i class='fa fa-pencil-square fa-2x'></i>".html_safe, edit_deck_path(deck), id: "Изменить" %>
+                <%= link_to "<i class='fa fa-times fa-2x'></i>".html_safe, deck_path(deck), method: :delete, id: "Удалить", data: { confirm: "Вместе с колодой будут удалены все карты в ней. Вы точно хотите удалить колоду?" } %>
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

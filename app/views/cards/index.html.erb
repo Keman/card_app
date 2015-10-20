@@ -6,7 +6,8 @@
         <tr>
           <th>Оригинал</th>
           <th>Перевод</th>
-          <th>Дата просмотра</th>
+          <th>Колода</th>
+          <th>Дата повторения</th>
         </tr>
       </thead>
       <% @cards.each do |card| %>
@@ -14,11 +15,12 @@
           <tr>
             <td><%= card.original_text %></td>
             <td><%= card.translated_text %></td>
+            <td><%= card.deck.description %></td>
             <td><%= card.review_date.to_formatted_s(:date_with_slashes) %></td>
-            <td><%= link_to "Изменить", edit_card_path(card) %></td>
-            <td><%= link_to "Удалить", card_path(card),
-                    method: :delete,
-                    date: { confirm: "Точно?" } %></td>
+            <td>
+              <%= link_to "<i class='fa fa-pencil-square fa-2x'></i>".html_safe, edit_card_path(card), id: "Изменить" %>
+              <%= link_to "<i class='fa fa-times fa-2x'></i>".html_safe, card_path(card), method: :delete, id: "Удалить" %>
+            </td>
           </tr>
         </tbody>
       <% end %>

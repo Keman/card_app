@@ -1,0 +1,5 @@
+<%= simple_form_for deck do |f| %>
+  <%= f.input :description, as: :string, label: "Название колоды", input_html: {value: deck.description || "Новая колода"} %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="text-center"><%= f.button :submit, value: "ОК" %></div>
+<% end %>

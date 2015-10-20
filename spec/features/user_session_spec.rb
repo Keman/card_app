@@ -6,7 +6,6 @@ describe "login and logout" do
 
   it "should correctly login user" do
     visit root_path
-    click_link "Войти"
     fill_in "user_sessions_email", with: "u@mail.com"
     fill_in "user_sessions_password", with: "123"
     click_button "Войти"

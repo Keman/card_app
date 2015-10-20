@@ -17,6 +17,7 @@ gem 'validates_email_format_of', '1.6.3'
 gem 'figaro', '1.1.1'
 gem 'paperclip', '4.3.1'
 gem 'aws-sdk', '< 2.0'
+gem 'font-awesome-sass', '4.4.0'
 gem 'sdoc', '0.4.1', group: :doc
 
 group :development, :test do

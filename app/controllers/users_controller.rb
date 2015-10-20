@@ -19,8 +19,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      login(params[:user][:email], params[:user][:password])
+      login(user_params[:email], user_params[:password])
       flash[:success] = "Добро пожаловать!"
+      Deck.create(description: "Стандартная колода", user: @user, standart: true)
       redirect_to root_path
     else
       render "new"
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:success] = "Успешно изменено"
-      redirect_to @user
+      redirect_to root_path
     else
       render "edit"
     end
@@ -38,7 +39,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_path
+    logout
+    flash[:warning] = "Пользователь удален"
+    redirect_to root_path
   end
 
   private

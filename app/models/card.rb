@@ -1,23 +1,28 @@
 class Card < ActiveRecord::Base
   belongs_to :user
+  belongs_to :deck
 
   before_validation :set_default_review_date, on: [:create]
-  validates :user_id, :original_text, :translated_text, :review_date, presence: true
+  validates :user_id, :deck_id, :original_text, :translated_text, :review_date, presence: true
   validate :equality_check
 
   has_attached_file :picture, styles: { original: "360x360#" }
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, attributes: :picture, less_than: 1.megabytes
 
-  scope :for_review, -> { where("review_date <= ?", Time.now).order ("random()") }
+  scope :for_review, -> { where("review_date <= ?", Time.now.utc).order ("random()") }
 
   def self.of_user(id)
     where(user_id: id)
   end
 
+  def self.of_deck(id)
+    where(deck_id: id)
+  end
+
   def check_translation(version_of_translation)
     if prepare_word(version_of_translation) == prepare_word(translated_text)
-      self.review_date = Time.now + 5.days
+      self.review_date = Time.now.utc.to_date + 5.days
       save
       true
     else
@@ -28,7 +33,7 @@ class Card < ActiveRecord::Base
   private
 
   def set_default_review_date
-    self.review_date = Time.now + 3.days
+    self.review_date = Time.now.utc.to_date + 3.days
   end
 
   def equality_check

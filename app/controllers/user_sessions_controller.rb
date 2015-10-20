@@ -8,10 +8,10 @@ class UserSessionsController < ApplicationController
   def create
     if @user = login(user_sessions_params[:email], user_sessions_params[:password])
       flash[:success] = "Привет!"
-      redirect_back_or_to user_path(@user)
+      redirect_back_or_to root_path
     else
-      flash.now[:danger] = "Ошибка входа"
-      render action: "new"
+      flash[:danger] = "Ошибка входа"
+      redirect_to :back
     end
   end
 
