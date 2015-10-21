@@ -14,6 +14,6 @@ describe Card do
   end
 
   it "should set right default review date" do
-    expect(card.review_date).to eq(Time.now.utc.to_date + 3.days)
+    expect(card.review_date).to eq(Time.now.utc.to_date)
   end
 end
