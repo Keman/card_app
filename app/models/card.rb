@@ -24,7 +24,7 @@ class Card < ActiveRecord::Base
     if prepare_word(version_of_translation) == prepare_word(translated_text)
       correct_translation
     else
-      incorrect_translation
+      !incorrect_translation
     end
   end
 
@@ -44,7 +44,6 @@ class Card < ActiveRecord::Base
     self.losing_streak = 0
     self.review_date = Time.now.utc.to_date + set_review_date
     save
-    true
   end
 
   def incorrect_translation
@@ -55,7 +54,6 @@ class Card < ActiveRecord::Base
       self.review_date = Time.now.utc.to_date + set_review_date
     end
     save
-    false
   end
 
   def equality_check
