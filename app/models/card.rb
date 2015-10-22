@@ -36,7 +36,7 @@ class Card < ActiveRecord::Base
 
   def set_review_date
     lucky_streak_date = [0, 1, 3, 7, 14, 30]
-    lucky_streak_date[self.lucky_streak].days
+    lucky_streak_date[lucky_streak].days
   end
 
   def correct_translation
