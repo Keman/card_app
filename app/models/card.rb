@@ -22,10 +22,19 @@ class Card < ActiveRecord::Base
 
   def check_translation(version_of_translation)
     if prepare_word(version_of_translation) == prepare_word(translated_text)
-      self.review_date = Time.now.utc.to_date + 5.days
+      self.lucky_streak += 1 if self.lucky_streak < 5
+      self.losing_streak = 0
+      self.review_date = Time.now.utc.to_date + set_review_date
       save
       true
     else
+      self.losing_streak += 1
+      if self.losing_streak == 3
+        self.lucky_streak = 1
+        self.losing_streak = 0
+        self.review_date = Time.now.utc.to_date + set_review_date
+      end
+      save
       false
     end
   end
@@ -34,6 +43,11 @@ class Card < ActiveRecord::Base
 
   def set_default_review_date
     self.review_date = Time.now.utc.to_date
+  end
+
+  def set_review_date
+    lucky_streak_date = [0,1,3,7,14,30]
+    lucky_streak_date[self.lucky_streak].days
   end
 
   def equality_check
