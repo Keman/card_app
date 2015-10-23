@@ -9,7 +9,11 @@ class ReviewsController < ApplicationController
     if card.check_translation(review_params[:version_of_translation])
       flash[:success] = "Правильно :)"
     else
-      flash[:danger] = "Неправильно :("
+      if DamerauLevenshtein.distance(review_params[:version_of_translation], card.translated_text, 1) < 2
+        flash[:warning] = "Опечататка? Было введено #{review_params[:version_of_translation]}, а должно быть #{card.translated_text}"
+      else
+        flash[:danger] = "Неправильно :("
+      end
     end
     redirect_to :back
   end

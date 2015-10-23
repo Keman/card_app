@@ -6,7 +6,7 @@ describe "review card process" do
   let!(:deck_1) { create(:deck, user: user) }
   let!(:deck_2) { create(:deck, user: user) }
   let!(:card_1) { create(:card, translated_text: "Тест", user: user, deck: deck_1) }
-  let!(:card_2) { create(:card, translated_text: "Тост", user: user, deck: deck_2) }
+  let!(:card_2) { create(:card, translated_text: "Abrakadabra", user: user, deck: deck_2) }
 
   before(:each) do
     login("u@mail.com", "123")
@@ -20,6 +20,13 @@ describe "review card process" do
     fill_in "review_version_of_translation", with: "Тест"
     click_button "Проверить!"
     expect(page).to have_content "Правильно :)"
+  end
+
+  it "should show warning flash message (if it need)" do
+    visit new_review_path
+    fill_in "review_version_of_translation", with: "Тост"
+    click_button "Проверить!"
+    expect(page).to have_content "Опечататка?"
   end
 
   it "should show negative flash message (if it need)" do
@@ -38,7 +45,7 @@ describe "review card process" do
 
   it "should't show card for review from common deck if selected main" do
     visit new_review_path
-    fill_in "review_version_of_translation", with: "Тост"
+    fill_in "review_version_of_translation", with: "Abrakadabra"
     click_button "Проверить!"
     expect(page).to have_content "Неправильно :("
   end
