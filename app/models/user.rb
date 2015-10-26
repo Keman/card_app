@@ -10,4 +10,10 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
   validates :email, uniqueness: true, email_format: { message: "has invalid format" }
+
+  def self.notify_pending_cards
+    User.where(id: Card.for_review.select(:user_id)).find_each do |user|
+      NotificationsMailer.pending_cards(user).deliver_now
+    end
+  end
 end
