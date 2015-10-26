@@ -19,6 +19,9 @@ gem 'paperclip', '4.3.1'
 gem 'aws-sdk', '< 2.0'
 gem 'font-awesome-sass', '4.4.0'
 gem 'damerau-levenshtein', '1.1.0'
+gem 'sidekiq', '3.5.1'
+gem 'russian', '0.6.0'
+gem 'whenever', '0.9.4', :require => false
 gem 'sdoc', '0.4.1', group: :doc
 
 group :development, :test do
