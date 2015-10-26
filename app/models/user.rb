@@ -12,8 +12,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, email_format: { message: "has invalid format" }
 
   def self.notify_pending_cards
-    Card.for_review.select(:user_id).group(:user_id).each do |group_of_cards|
-      user = User.find(group_of_cards.user_id)
+    User.where(id: Card.for_review.select(:user_id).group(:user_id)).each do |user|
       NotificationsMailer.pending_cards(user).deliver_now
     end
   end
