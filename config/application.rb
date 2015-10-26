@@ -27,8 +27,8 @@ module CardApp
       address:              "smtp.gmail.com",
       port:                 587,
       domain:               "example.com",
-      user_name:            "cardappmailer",
-      password:             "WareFare123",
+      user_name:            ENV["mailer_name"],
+      password:             ENV["mailer_password"],
       authentication:       "plain",
       enable_starttls_auto: true }
   end
