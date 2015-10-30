@@ -8,12 +8,12 @@
             <%= image_tag @card.picture.url %>
           <% end %>
           <%= f.input :version_of_translation,
-                       label: "Как это переводится #{@card.original_text}?" %>
+                       label: (t "review.question", original: @card.original_text) %>
           <%= f.hidden_field :card_id, value: @card.id %>
-          <%= f.button :submit, "Проверить!" %>
+          <%= f.button :submit, (t "review.submit") %>
         <% end %>
       <% else %>
-        <h3>У вас нет карточек для повторения</h3>
+        <h3><%= t "review.empty" %></h3>
       <% end %>
     </div>
   </div>

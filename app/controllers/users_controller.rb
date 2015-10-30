@@ -20,34 +20,34 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(user_params[:email], user_params[:password])
-      flash[:success] = "Добро пожаловать!"
-      Deck.create(description: "Стандартная колода", user: @user, standart: true)
+      flash[:success] = t "user.create"
+      Deck.create(description: (t "deck.std_deck"), user: @user, standart: true)
       redirect_to root_path
     else
-      render "new"
+      render :new
     end
   end
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "Успешно изменено"
+      flash[:success] = t "user.update"
       redirect_to root_path
     else
-      render "edit"
+      render :edit
     end
   end
 
   def destroy
     @user.destroy
     logout
-    flash[:warning] = "Пользователь удален"
+    flash[:warning] = t "user.destroy"
     redirect_to root_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :locale)
   end
 
   def find_user
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
   def user_check
     if @user != current_user
-      flash[:warning] = "Неверный пользователь"
+      flash[:warning] = t "default.auth.wrong_user"
       redirect_back_or_to root_path
     end
   end

@@ -1,13 +1,13 @@
 <div class="container">
   <div class="col-xs-12">
-    <h3 class="text-center">Все карточки</h3>
+    <h3 class="text-center"><%= t "nav.cards.all_cards" %></h3>
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th>Оригинал</th>
-          <th>Перевод</th>
-          <th>Колода</th>
-          <th>Дата повторения</th>
+          <th><%= t "card.original_text" %></th>
+          <th><%= t "card.translated_text" %></th>
+          <th><%= t "deck.deck" %></th>
+          <th><%= t "card.review_date" %></th>
         </tr>
       </thead>
       <% @cards.each do |card| %>
@@ -18,8 +18,8 @@
             <td><%= card.deck.description %></td>
             <td><%= card.review_date.to_formatted_s(:date_with_slashes) %></td>
             <td>
-              <%= link_to "<i class='fa fa-pencil-square fa-2x'></i>".html_safe, edit_card_path(card), id: "Изменить" %>
-              <%= link_to "<i class='fa fa-times fa-2x'></i>".html_safe, card_path(card), method: :delete, id: "Удалить" %>
+              <%= link_to "<i class='fa fa-pencil-square fa-2x'></i>".html_safe, edit_card_path(card), id: (t "default.edit") %>
+              <%= link_to "<i class='fa fa-times fa-2x'></i>".html_safe, card_path(card), method: :delete, id: (t "default.delete") %>
             </td>
           </tr>
         </tbody>

@@ -12,7 +12,7 @@ describe "user process" do
     fill_in "user_email", with: "test@mail.com"
     fill_in "user_password", with: "qwerty"
     fill_in "user_password_confirmation", with: "qwerty"
-    click_button "ОК"
+    click_button "OK"
     expect(page).to have_content "Добро пожаловать!"
   end
 

@@ -1,13 +1,13 @@
 <div class="container">
   <div class="col-xs-3"></div>
   <div class="col-xs-6 text-center">
-    <h3>Изменить параметры пользователя</h3>
+    <h3><%= t "user.edit" %></h3>
     <%= render "form", user: @user %>
     </br>
-    <%= button_to "Удалить пользователя", user_path(@user),
+    <%= button_to (t "user.delete"), user_path(@user),
             class: "btn btn-danger",
             method: :delete,
-            data: { confirm: "Точно?" } %>
+            data: { confirm: (t "user.delete_confirm") } %>
   </div>
   <div class="col-xs-3"></div>
 </div>

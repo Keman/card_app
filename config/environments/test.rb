@@ -48,4 +48,6 @@ Rails.application.configure do
       url: ":s3_domain_url"
     }
   }
+
+  config.i18n.default_locale = :ru
 end

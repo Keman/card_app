@@ -58,14 +58,14 @@ class DecksController < ApplicationController
 
   def user_check
     if @deck.user != current_user
-      flash[:warning] = "Неверный пользователь"
+      flash[:warning] = t "default.auth.wrong_user"
       redirect_back_or_to root_path
     end
   end
 
   def std_check
     if @deck.standart == true
-      flash[:warning] = "Нельзя менять стандартную колоду"
+      flash[:warning] = t "deck.std_deck_warning"
       redirect_back_or_to root_path
     end
   end

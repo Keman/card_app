@@ -26,7 +26,7 @@ describe "review card process" do
     visit new_review_path
     fill_in "review_version_of_translation", with: "Тост"
     click_button "Проверить!"
-    expect(page).to have_content "Опечататка?"
+    expect(page).to have_content "Опечатка?"
   end
 
   it "should show negative flash message (if it need)" do

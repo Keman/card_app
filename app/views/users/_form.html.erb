@@ -1,6 +1,11 @@
 <%= simple_form_for user do |f| %>
-  <%= f.input :email, label: "Почта" %>
-  <%= f.input :password, label: "Пароль" %>
-  <%= f.input :password_confirmation, label: "Потдверждение пароля" %>
-  <div class="text-center"><%= f.button :submit, value: "ОК" %></div>
+  <%= f.input :email, label: (t "user.email") %>
+  <%= f.input :password, label: (t "user.password") %>
+  <%= f.input :password_confirmation, label: (t "user.password_confirmation") %>
+  <%= f.collection_radio_buttons :locale, [["ru", "ru"] ,["en", "us"]],
+                                 :first, :last, checked: session[:locale],
+                                 :item_wrapper_class => "horizontal" do |l| %>
+    <%= l.label { image_tag("#{l.text}.png") + l.radio_button } %>
+  <% end %>
+  <div class="text-center"><%= f.button :submit, value: (t "default.submit") %></div>
 <% end %>
