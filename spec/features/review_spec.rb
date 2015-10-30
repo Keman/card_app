@@ -18,36 +18,36 @@ describe "review card process" do
   it "should show positive flash message (if it need)" do
     visit new_review_path
     fill_in "review_version_of_translation", with: "Тест"
-    click_button (I18n.t "review.submit")
-    expect(page).to have_content (I18n.t "review.success")
+    click_button I18n.t "review.submit"
+    expect(page).to have_content I18n.t "review.success"
   end
 
   it "should show warning flash message (if it need)" do
     visit new_review_path
     fill_in "review_version_of_translation", with: "Тост"
-    click_button (I18n.t "review.submit")
+    click_button I18n.t "review.submit"
     expect(page).to have_content (I18n.t "review.warning").split.first
   end
 
   it "should show negative flash message (if it need)" do
     visit new_review_path
     fill_in "review_version_of_translation", with: "Abrakadabra"
-    click_button (I18n.t "review.submit")
-    expect(page).to have_content (I18n.t "review.danger")
+    click_button I18n.t "review.submit"
+    expect(page).to have_content I18n.t "review.danger"
   end
 
   it "should show card for review only from main deck (if it selected)" do
     visit new_review_path
     fill_in "review_version_of_translation", with: "Тест"
-    click_button (I18n.t "review.submit")
-    expect(page).to have_content (I18n.t "review.success")
+    click_button I18n.t "review.submit"
+    expect(page).to have_content I18n.t "review.success"
   end
 
   it "should't show card for review from common deck if selected main" do
     visit new_review_path
     fill_in "review_version_of_translation", with: "Abrakadabra"
-    click_button (I18n.t "review.submit")
-    expect(page).to have_content (I18n.t "review.danger")
+    click_button I18n.t "review.submit"
+    expect(page).to have_content I18n.t "review.danger"
   end
 
   it "should show picture (if it present))" do
