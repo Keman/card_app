@@ -6,6 +6,10 @@ ru:
     auth:
       not_authenticated: Сначала войдите
       wrong_user: Неверный пользователь
+  notifications_mailer:
+    pending_cards:
+      subject: У вас есть карточки для повторения!
+      mail: "Привет! У тебя есть %{cards} для проверки."
   nav:
     card_app: Флэшкарточкер
     sign_in: Войти

@@ -6,6 +6,10 @@ en:
     auth:
       not_authenticated: Only for authorized
       wrong_user: Wrong user
+  notifications_mailer:
+    pending_cards:
+      subject: You have cards for repeat!
+      mail: "Hey! You have %{cards} for repeat."
   nav:
     card_app: Card_app
     sign_in: Sign in

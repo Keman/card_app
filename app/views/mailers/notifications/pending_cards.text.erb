@@ -1,5 +1,1 @@
-<%= if @l = "ru" %>
-  Привет! У тебя есть <%= @number_of_cards %> для проверки.
-<%= else %>
-  Hey! You have <%= @number_of_cards %> for repeat.
-<% end %>
+I18n.t "notifications_mailer.pending_cards.mail", cards: @number_of_cards
