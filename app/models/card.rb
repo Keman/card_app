@@ -58,7 +58,7 @@ class Card < ActiveRecord::Base
 
   def equality_check
     if prepare_word(original_text) == prepare_word(translated_text)
-      errors.add(:original_text, "original and translated text can't be equal")
+      errors.add(:original_text, (t "card.equality_check_error"))
     end
   end
 

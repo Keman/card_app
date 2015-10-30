@@ -1,1 +1,4 @@
-Привет! У тебя есть <%= @number_of_cards %> для проверки.
+<%= n = @user.cards.for_review.count %>
+<%= l = @user.locale %>
+<%= number_of_cards = l == "ru" ? n.to_s + " " + Russian.p(n, "карточка", "карточки", "карточек") : pluralize(n, "card") %>
+I18n.t "notifications_mailer.pending_cards.mail", cards: number_of_cards

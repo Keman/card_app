@@ -19,8 +19,8 @@ gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'font-awesome-sass'
 gem 'damerau-levenshtein'
-gem 'sidekiq'
 gem 'russian'
+gem 'http_accept_language'
 gem 'whenever', :require => false
 gem 'sdoc', group: :doc
 

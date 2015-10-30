@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 3 }
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
-  validates :email, uniqueness: true, email_format: { message: "has invalid format" }
+  validates :email, uniqueness: true, email_format: true
 
   def self.notify_pending_cards
     User.where(id: Card.for_review.select(:user_id)).find_each do |user|

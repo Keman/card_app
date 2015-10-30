@@ -1,23 +1,78 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  default:
+    edit: Edit
+    delete: Delete
+    submit: OK
+    auth:
+      not_authenticated: Only for authorized
+      wrong_user: Wrong user
+  notifications_mailer:
+    pending_cards:
+      subject: You have cards for repeat!
+      mail: "Hey! You have %{cards} for repeat."
+  nav:
+    card_app: Card_app
+    sign_in: Sign in
+    sign_up: Sign up
+    review: Review cards
+    cards:
+      label: Cards
+      add_card: Add card
+      all_cards: All cards
+    decks:
+      label: Decks
+      add_deck: Add deck
+      all_decks: All decks
+    user:
+      settings: Settings
+      edit: Edit profile
+      logout: Logout
+  home_page:
+    info: First useful and simple manager of flash cards. Yes, it is.
+  oauth:
+    success: "You entered via %{provider}"
+    danger: "Can't entered via %{provider}"
+  user_session:
+    create:
+      success: Hello!
+      danger: Login failed
+    destroy: See you later!
+  user:
+    create: Wellcome!
+    update: Successfuly changed
+    destroy: User was deleted
+    email: Email
+    password: Password
+    password_confirmation: Password confirmation
+    email_format_error: has wrong format
+    add: Create new user
+    edit: Change user settings
+    delete: Delete user
+    delete_confirm: You sure?
+  review:
+    success: Right :)
+    warning: "Misprint? You input %{version}, but must be %{translate}"
+    danger: Wrong :(
+    question: "How translated %{original}?"
+    empty: You have't cards for repeat
+    submit: Check!
+  card:
+    original_text: Original
+    translated_text: Translation
+    review_date: Review date
+    picture: Picture
+    delete_picture: Delete picture
+    equality_check_error: Original and translated text cant be equal
+    edit: Change card
+  deck:
+    deck: Deck
+    description: Description
+    default_description: New deck
+    cards_count: Number of cards
+    main_flag: Main
+    edit: Change deck
+    make_main: Make main
+    make_common: Make common
+    delete_confirm: Together with deck, cards from it will be removed. You sure wish delete deck?
+    std_deck: Standart deck
+    std_deck_warning: Cant change standart deck

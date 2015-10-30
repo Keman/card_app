@@ -1,11 +1,11 @@
 <%= simple_form_for card do |f| %>
-  <%= f.input :original_text, as: :string, label: "Слово" %>
-  <%= f.input :translated_text, as: :string, label: "Перевод" %>
+  <%= f.input :original_text, as: :string, label: (t "card.original_text") %>
+  <%= f.input :translated_text, as: :string, label: (t "card.translated_text") %>
   <%= f.association :deck, collection: Deck.of_user(current_user),
                            include_blank: false,
                            label_method: :description,
-                           label: "Колода" %>
-  <%= f.input :picture, as: :file, label: "Картинка" %>
+                           label: (t "deck.deck") %>
+  <%= f.input :picture, as: :file, label: (t "card.picture") %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <div class="text-center"><%= f.button :submit, value: "ОК" %></div>
+  <div class="text-center"><%= f.button :submit, value: (t "default.submit") %></div>
 <% end %>

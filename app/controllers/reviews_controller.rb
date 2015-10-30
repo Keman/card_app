@@ -7,12 +7,12 @@ class ReviewsController < ApplicationController
   def create
     card = Card.find(review_params[:card_id])
     if card.check_translation(review_params[:version_of_translation])
-      flash[:success] = "Правильно :)"
+      flash[:success] = t "review.success"
     else
       if DamerauLevenshtein.distance(review_params[:version_of_translation], card.translated_text, 1) < 2
-        flash[:warning] = "Опечататка? Было введено #{review_params[:version_of_translation]}, а должно быть #{card.translated_text}"
+        flash[:warning] = t "review.warning", version: review_params[:version_of_translation], translate: card.translated_text
       else
-        flash[:danger] = "Неправильно :("
+        flash[:danger] = t "review.danger"
       end
     end
     redirect_to :back

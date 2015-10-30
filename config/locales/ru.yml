@@ -1,0 +1,78 @@
+ru:
+  default:
+    edit: Изменить
+    delete: Удалить
+    submit: OK
+    auth:
+      not_authenticated: Сначала войдите
+      wrong_user: Неверный пользователь
+  notifications_mailer:
+    pending_cards:
+      subject: У вас есть карточки для повторения!
+      mail: "Привет! У тебя есть %{cards} для проверки."
+  nav:
+    card_app: Флэшкарточкер
+    sign_in: Войти
+    sign_up: Зарегистрироваться
+    review: Проверить карточку
+    cards:
+      label: Карточки
+      add_card: Добавить карточку
+      all_cards: Все карточки
+    decks:
+      label: Колоды
+      add_deck: Добавить колоду
+      all_decks: Все колоды
+    user:
+      settings: Настройки
+      edit: Редактировать профиль
+      logout: Выйти
+  home_page:
+    info: Первый в мире удобный менеджер флеш-карточек. Именно так.
+  oauth:
+    success: "Вы вошли через %{provider}"
+    danger: "Не удалось войти через %{provider}"
+  user_session:
+    create:
+      success: Привет!
+      danger: Ошибка входа
+    destroy: До встречи!
+  user:
+    create: Добро пожаловать!
+    update: Успешно изменено
+    destroy: Пользователь удален
+    email: Почта
+    password: Пароль
+    password_confirmation: Потдверждение пароля
+    email_format_error: имеет неправильный формат
+    add: Создать нового пользователя
+    edit: Изменить параметры пользователя
+    delete: Удалить пользователя
+    delete_confirm: Точно?
+  review:
+    success: Правильно :)
+    warning: "Опечатка? Было введено %{version}, а должно быть %{translate}"
+    danger: Неправильно :(
+    question: "Как это переводится %{original}?"
+    empty: У вас нет карточек для повторения
+    submit: Проверить!
+  card:
+    original_text: Оригинал
+    translated_text: Перевод
+    review_date: Дата повторения
+    picture: Картинка
+    delete_picture: Удалить картинку
+    equality_check_error: Оригинал и перевод не могут быть одинаковы
+    edit: Изменить карточку
+  deck:
+    deck: Колода
+    description: Название колоды
+    default_description: Новая колода
+    cards_coutn: Количество карточек
+    main_flag: Текущая
+    edit: Редактировать колоду
+    make_main: Сделать текущей
+    make_common: Сделать обычной
+    delete_confirm: Вместе с колодой будут удалены все карты в ней. Вы точно хотите удалить колоду?
+    std_deck: Стандартная колода
+    std_deck_warning: Нельзя менять стандартную колоду

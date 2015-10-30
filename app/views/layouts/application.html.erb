@@ -5,7 +5,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-  <title>Флэшкарточкер</title>
+  <title><%= t "nav.card_app" %></title>
   <link rel="stylesheet" href="application.css.scss">
 </head>
 
@@ -13,43 +13,49 @@
   <div class="navbar navbar-inverse navbar-fluid-top">
     <div class="container">
       <div class="navbar-header">
-        <a href="<%= root_path %>" class="navbar-brand">Флэшкарточкер <i class="fa fa-language"></i></a>
+        <a href="<%= root_path %>" class="navbar-brand"><%= t "nav.card_app" %> <i class="fa fa-language"></i></a>
       </div>
       <div class="navbar-right">
         <% if current_user %>
           <ul class="nav navbar-nav">
-            <li><a href="<%= new_review_path %>" class="navbar-brand">Проверить карточку</a></li>
+            <li><a href="<%= new_review_path %>" class="navbar-brand"><%= t "nav.review" %></a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">Карточки <i class="fa fa-level-down"></i></b></a>
+              <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown"><%= t "nav.cards.label" %> <i class="fa fa-level-down"></i></b></a>
               <ul class="dropdown-menu">
-                <li><a href="<%= new_card_path %>"><i class="fa fa-plus-square"></i> Добавить карточку</a></li>
-                <li><a href="<%= cards_path %>"><i class="fa fa-list"></i> Посмотреть карточки</a></li>
+                <li><a href="<%= new_card_path %>"><i class="fa fa-plus-square"></i> <%= t "nav.cards.add_card" %></a></li>
+                <li><a href="<%= cards_path %>"><i class="fa fa-list"></i> <%= t "nav.cards.all_cards" %></a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">Колоды <i class="fa fa-level-down"></i></a>
+              <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown"><%= t "nav.decks.label" %> <i class="fa fa-level-down"></i></a>
               <ul class="dropdown-menu">
-                <li><a href="<%= new_deck_path %>"><i class="fa fa-plus-square"></i> Добавить колоду</a></li>
-                <li><a href="<%= decks_path %>"><i class="fa fa-list"></i> Посмотреть колоды</a></li>
+                <li><a href="<%= new_deck_path %>"><i class="fa fa-plus-square"></i> <%= t "nav.decks.add_deck" %></a></li>
+                <li><a href="<%= decks_path %>"><i class="fa fa-list"></i> <%= t "nav.decks.all_decks" %></a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" id="Настройки" class="dropdown-toggle navbar-brand" data-toggle="dropdown"><i class="fa fa-cog"></i></b></a>
+              <a href="#" id="Settings" class="dropdown-toggle navbar-brand" data-toggle="dropdown"><i class="fa fa-cog"></i></b></a>
               <ul class="dropdown-menu">
-                <li><a href="<%= edit_user_path(current_user) %>"><i class="fa fa-pencil"></i> Редактировать профиль</a></li>
-                <li><a href="<%= logout_path %>" data-method="post" id="Выйти"><i class="fa fa-sign-out"></i> Выйти</a></li>
+                <li><a href="<%= edit_user_path(current_user) %>"><i class="fa fa-pencil"></i> <%= t "nav.user.edit" %></a></li>
+                <li><a href="<%= logout_path %>" data-method="post" id="Logout"><i class="fa fa-sign-out"></i> <%= t "nav.user.logout" %></a></li>
               </ul>
             </li>
           </ul>
         <% else %>
           <%= simple_form_for :user_sessions, url: user_sessions_path, html: { class: "navbar-form" } do |f| %>
-            <%= f.input_field :email, placeholder: "Email", label: false, class: "form-control" %>
-            <%= f.input_field :password, placeholder: "Пароль", label: false, class: "form-control" %>
-            <%= button_tag(type: "submit", class: "btn btn-primary", id: "Войти") do %>
-              <i class="fa fa-sign-in"></i> Войти
+            <%= f.input_field :email, placeholder: (t "user.email"), label: false, class: "form-control" %>
+            <%= f.input_field :password, placeholder: (t "user.password"), label: false, class: "form-control" %>
+            <%= button_tag(type: "submit", class: "btn btn-primary", id: (t "nav.sign_in")) do %>
+              <i class="fa fa-sign-in"></i> <%= t "nav.sign_in" %>
             <% end %>
             <%= link_to "<i class='fa fa-twitter'></i>".html_safe, auth_at_provider_path(:provider => :twitter), {:class=>"btn btn-primary"} %>
-            <%= link_to "<i class='fa fa-user-plus'></i> Зарегистрироваться".html_safe, new_user_path, {:class=>"btn btn-primary"} %>
+            <%= link_to "<i class='fa fa-user-plus'></i> #{t 'nav.sign_up'}".html_safe, new_user_path, {:class=>"btn btn-primary"} %>
+            <%= link_to "?locale=ru" do %>
+              <%= image_tag("ru.png") %>
+            <% end %>
+            <%= link_to "?locale=en" do %>
+              <%= image_tag("us.png") %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
