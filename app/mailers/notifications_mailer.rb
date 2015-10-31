@@ -5,6 +5,6 @@ class NotificationsMailer < ActionMailer::Base
 
   def pending_cards(user)
     @user = user
-    mail to: @user.email, subject: I18n.t "notifications_mailer.pending_cards.subject"
+    mail to: @user.email, subject: (I18n.t "notifications_mailer.pending_cards.subject")
   end
 end
