@@ -4,8 +4,8 @@ url = "http://www.languagedaily.com/learn-german/vocabulary/common-german-words"
 doc = Nokogiri::HTML(open(url))
 nodes = doc.css("tr")
 nodes.shift
-user = User.create(email: "#{('a'..'z').to_a.sample(10).join}@mail.com", password: "123", password_confirmation: "123", locale: "en")
-deck = Deck.create(description: "Стандартная колода", user: user, standart: true)
+user = User.create(email: "#{('a'..'z').to_a.sample(10).join}@fakemail.com", password: "123", password_confirmation: "123", locale: "en")
+deck = Deck.create(description: "Standart deck", user: user, standart: true)
 puts "For login use this email: " + user.email + " and this password: 123"
 
 nodes.each do |node|
